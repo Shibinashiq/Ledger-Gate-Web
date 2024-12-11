@@ -1,7 +1,7 @@
 import { Input } from "@nextui-org/input"
 import { Button } from "@nextui-org/button"
 import { Link } from "@nextui-org/link"
-import Image from "next/image"
+// import Image from "next/image"
 
 export default function Login() {
   return (
@@ -10,13 +10,13 @@ export default function Login() {
         <div className="grid gap-8 md:grid-cols-2 md:gap-12">
           {/* Left Column */}
           <div className="flex flex-col justify-center space-y-6">
-            <Image 
+            {/* <Image 
               src="/placeholder.svg?height=40&width=150"
               alt="LedgerGate Logo"
               width={150}
               height={40}
               className="mb-8"
-            />
+            /> */}
             <div className="space-y-4">
               <h1 className="text-3xl font-bold leading-tight tracking-tight text-gray-900 md:text-4xl">
                 Your Path to <br />
@@ -31,22 +31,22 @@ export default function Login() {
               <p className="font-medium">Get app on</p>
               <div className="flex gap-4">
                 <Link href="#" className="block w-32">
-                  <Image
+                  {/* <Image
                     src="/placeholder.svg?height=40&width=120"
                     alt="Download on App Store"
                     width={120}
                     height={40}
                     className="h-10 w-auto"
-                  />
+                  /> */}
                 </Link>
                 <Link href="#" className="block w-32">
-                  <Image
+                  {/* <Image
                     src="/placeholder.svg?height=40&width=120"
                     alt="Get it on Google Play"
                     width={120}
                     height={40}
                     className="h-10 w-auto"
-                  />
+                  /> */}
                 </Link>
               </div>
             </div>
@@ -57,13 +57,13 @@ export default function Login() {
             <div className="w-full max-w-md space-y-8 rounded-2xl bg-white p-8 shadow-lg">
               <div className="space-y-4 text-center">
                 <div className="mx-auto w-16">
-                  <Image
+                  {/* <Image
                     src="/placeholder.svg?height=64&width=64"
                     alt="Phone Icon"
                     width={64}
                     height={64}
                     className="h-16 w-16"
-                  />
+                  /> */}
                 </div>
                 <h2 className="text-xl font-semibold text-gray-900">
                   Enter your mobile number for OTP
