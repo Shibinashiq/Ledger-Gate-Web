@@ -55,16 +55,31 @@ const ClassCard = ({
   </Card>
 )
 
-const MonthSection = ({ month, classes }) => (
-  <div className="space-y-4">
-    <h2 className="text-lg font-semibold text-gray-900">{month}</h2>
+const MonthSection = ({ month, classes }) => {
+  const liveClass = classes.find((classItem) => classItem.isLive);
+  const otherClasses = classes.filter((classItem) => !classItem.isLive);
+
+  return (
     <div className="space-y-4">
-      {classes.map((classItem, index) => (
-        <ClassCard key={index} {...classItem} />
-      ))}
+      <h2 className="text-lg font-semibold text-gray-900">{month}</h2>
+      
+      {/* Live Class Section */}
+      {liveClass && (
+        <div>
+          <h3 className="text-md font-semibold text-red-500 mb-2">Live Class</h3>
+          <ClassCard key="live" {...liveClass} />
+        </div>
+      )}
+
+      {/* Other Classes Grid */}
+      <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {otherClasses.map((classItem, index) => (
+          <ClassCard key={index} {...classItem} />
+        ))}
+      </div>
     </div>
-  </div>
-)
+  );
+};
 
 export default function LiveClass() {
   const novemberClasses = [
@@ -101,7 +116,7 @@ export default function LiveClass() {
       date: "26",
       time: "1:30 PM - 2:30 PM"
     }
-  ]
+  ];
 
   const decemberClasses = [
     {
@@ -118,11 +133,11 @@ export default function LiveClass() {
       title: "Financial Statement Analysis",
       chapter: "Chapter E3"
     }
-  ]
+  ];
 
   return (
-    <div className="min-h-screen bg-[#FFF5EB] p-6">
-      <div className="mx-auto max-w-4xl">
+    <div className="min-h-screen  min-w-full p-6">
+      <div className="">
         <h1 className="mb-6 text-2xl font-bold text-gray-900">Live Class</h1>
         
         <Card className="bg-white">
