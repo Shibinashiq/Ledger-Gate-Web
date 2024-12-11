@@ -3,7 +3,7 @@ import { Home, BarChart2, FileText } from 'lucide-react';
 
 const Sidebar = () => {
   return (
-    <aside className="flex h-screen w-16 flex-col items-center border-r bg-white py-8 ">
+    <aside className="flex  w-16 flex-col items-center border-r bg-white py-8 ">
       <nav className="flex flex-1 flex-col items-center gap-8">
         <a 
           href="/"

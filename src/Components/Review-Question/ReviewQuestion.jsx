@@ -39,7 +39,7 @@ export default function ReviewQuestions() {
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
+    <div className="h-[100px]  bg-gray-50 p-4">
       {/* Header */}
       <div className="mb-6 flex items-center justify-between">
         <div className="flex items-center gap-4">
