@@ -59,8 +59,11 @@ const MonthSection = ({ month, classes }) => {
   const liveClass = classes.find((classItem) => classItem.isLive);
   const otherClasses = classes.filter((classItem) => !classItem.isLive);
 
+  // Show only enough cards to fit in three rows
+  const cardsToShow = otherClasses.slice(0, 6); // Assuming 3 columns, 2 rows max after the live class
+
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 ">
       <h2 className="text-lg font-semibold text-gray-900">{month}</h2>
       
       {/* Live Class Section */}
@@ -71,9 +74,9 @@ const MonthSection = ({ month, classes }) => {
         </div>
       )}
 
-      {/* Other Classes Grid */}
-      <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {otherClasses.map((classItem, index) => (
+      {/* Grid for Other Classes */}
+      <div className="mt-4 grid grid-rows-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {cardsToShow.map((classItem, index) => (
           <ClassCard key={index} {...classItem} />
         ))}
       </div>
@@ -136,12 +139,12 @@ export default function LiveClass() {
   ];
 
   return (
-    <div className="min-h-screen  min-w-full p-6">
-      <div className="">
+    <div className="min-w-full h-[628px]  p-6 bg-gradient-to-b from-[#FDE7C7] to-[#F4F4F4]">
+      <div className="scroll overflow-hidden">
         <h1 className="mb-6 text-2xl font-bold text-gray-900">Live Class</h1>
         
-        <Card className="bg-white">
-          <CardBody className="p-6">
+        <Card className="h-[500px] ">
+          <CardBody className="p-6  overflow-y-auto">
             <Tabs 
               aria-label="Class status" 
               color="warning"
@@ -159,9 +162,8 @@ export default function LiveClass() {
                   <span className="px-0 font-medium">Upcoming</span>
                 }
               >
-                <div className="mt-8 space-y-8">
+                <div className="">
                   <MonthSection month="November 2024" classes={novemberClasses} />
-                  <MonthSection month="December 2024" classes={decemberClasses} />
                 </div>
               </Tab>
               <Tab 
@@ -170,8 +172,9 @@ export default function LiveClass() {
                   <span className="px-0 font-medium">Completed</span>
                 }
               >
-                <div className="mt-8 space-y-8">
-                  <MonthSection month="November 2024" classes={novemberClasses} />
+                <div className="">
+                <MonthSection month="November 2024" classes={novemberClasses} />
+                <MonthSection month="November 2024" classes={novemberClasses} />
                   <MonthSection month="December 2024" classes={decemberClasses} />
                 </div>
               </Tab>

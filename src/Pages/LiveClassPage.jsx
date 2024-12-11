@@ -5,17 +5,19 @@ import LiveClass from "../Components/LiveClass/LiveClass";
 
 const LiveClassPage = () => {
   return (
-    <div>
-      <Navbar />
+    <div className="flex flex-col min-h-screen">
+    <Navbar />
 
-      <div className="flex ">
-        <Sidebar />
+    <div className="flex flex-1 overflow-hidden">
+      {/* Sidebar */}
+      <Sidebar className="w-64 bg-gray-100" />
 
-        <div className="flex flex-1  bg-gray-100 items-center justify-center">
-            <LiveClass /> 
-        </div>
+      {/* Main Content */}
+      <div className="flex-1   overflow-auto">
+        <LiveClass />
       </div>
     </div>
+  </div>
   );
 };
 
