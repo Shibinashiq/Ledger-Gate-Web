@@ -59,7 +59,7 @@ export default function ReviewQuestions() {
 
       <div className="flex flex-1 overflow-hidden ">
         {/* Sidebar */}
-        <div className="hidden relative   md:flex flex-col gap-2 p-4 bg-white shadow-sm">
+        <div className="hidden relative  z-10 md:flex flex-col gap-2 p-4 bg-white shadow-sm">
           {questions.map((q) => (
             <Button
               key={q.number}
@@ -79,7 +79,7 @@ export default function ReviewQuestions() {
         {/* Main Content */}
         <div className="flex-1 overflow-auto p-4">
           <div className="mb-4 p-10">
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-200 text-black">
+          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-200 text-black">
                 Multiple Choice
               </span>
             <h2 className="text-lg font-medium mb-4">
@@ -157,7 +157,7 @@ export default function ReviewQuestions() {
 
 
             {/* Buttons on the Right */}
-              <div className="flex relative h-16 justify-center items-center gap-4 ">
+              <div className="flex relative  h-16 justify-center items-center gap-4 ">
                 <Button
                   color="black"
                   className="w-32 h-11 rounded-xl  font-semibold  bg-black text-white"

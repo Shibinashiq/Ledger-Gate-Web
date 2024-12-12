@@ -5,6 +5,7 @@ import LiveClassPage from '../src/Pages/LiveClassPage';
 import ReportPage from '../src/Pages/ReportPage'
 import Login from './Components/Login/Login';
 import ReviewQuestions from '../src/Pages/ReviewQuestion'
+import QuestionSelection from './Components/Question-Selection/QuestionSelection';
 function App() {
   return (
     <Router> 
@@ -15,6 +16,7 @@ function App() {
         <Route path="report/" element={<ReportPage />} /> 
         <Route path="login/" element={<Login />} /> 
         <Route path="reviewquestions/" element={<ReviewQuestions />} /> 
+        <Route path="questionselection/" element={<QuestionSelection />} /> 
       </Routes>
     </Router>
   );
