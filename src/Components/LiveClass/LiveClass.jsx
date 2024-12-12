@@ -139,8 +139,8 @@ export default function LiveClass() {
   ];
 
   return (
-    <div className="min-w-full h-[628px]  p-6 bg-gradient-to-b from-[#FDE7C7] to-[#F4F4F4]">
-      <div className="scroll overflow-hidden">
+    <div className="min-w-full min-h-full p-6 bg-gradient-to-b from-[#FDE7C7] to-[#F4F4F4]">
+      <div className="">
         <h1 className="mb-6 text-2xl font-bold text-gray-900">Live Class</h1>
         
         <Card className="h-[500px] ">

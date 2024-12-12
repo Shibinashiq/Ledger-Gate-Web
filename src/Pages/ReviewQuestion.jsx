@@ -6,11 +6,11 @@ import ReviewQuestions from "../Components/Review-Question/ReviewQuestion";
 const ReviewQuestion = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar />
+      {/* <Navbar /> */}
 
       <div className="flex flex-1 overflow-hidden">
         {/* Sidebar */}
-        <Sidebar className="w-64 bg-gray-100" />
+        {/* <Sidebar className="w-64 bg-gray-100" /> */}
 
         {/* Main Content */}
         <div className="flex-1   overflow-auto">

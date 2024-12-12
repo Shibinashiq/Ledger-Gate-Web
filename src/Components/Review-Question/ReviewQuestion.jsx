@@ -1,6 +1,8 @@
-import { RadioGroup, Radio, Button, Card } from "@nextui-org/react"
+import { Button, Card } from "@nextui-org/react"
 import { ArrowLeft } from 'lucide-react'
 import { useState, useEffect } from "react"
+import flagicon from '../../assets/Flag.png'
+
 
 export default function ReviewQuestions() {
   const [selectedAnswer, setSelectedAnswer] = useState("")
@@ -31,47 +33,42 @@ export default function ReviewQuestions() {
     { number: 8, active: false },
   ]
 
-  const answers = [
-    "Companies use financial statements to document their cash flow, and documenting cash flow is the objective of financial reporting.",
-    "Companies use financial statements to determine selling prices of products, and determining selling prices of products is the objective of financial reporting.",
-    "Companies use financial statements to determine which new projects to pursue, and deciding which projects to pursue is the objective of financial reporting.",
-    "Companies use financial statements to provide financial information to potential capital providers, and providing information to capital providers is the objective of financial reporting.",
-  ]
-
   return (
-    <div className="h-[100px]  bg-gray-50 p-4">
+    <div className="min-h-screen flex flex-col bg-gray-100">
       {/* Header */}
-      <div className="mb-6 flex items-center justify-between">
+      <header className="flex items-center  border  justify-between bg-white px-4 py-3 shadow-sm">
         <div className="flex items-center gap-4">
           <Button isIconOnly variant="light" className="text-gray-700">
             <ArrowLeft size={20} />
           </Button>
-          <h1 className="text-lg font-medium">Review Questions</h1>
+          <h1 className="text-large font-sans  ">Review Questions</h1>
         </div>
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white">
-              🕒
-            </span>
-            <span className="font-medium">{formatTime(timeLeft)}</span>
-          </div>
-          <Button color="danger" className="bg-orange-500 font-medium">
+        <div className="flex items-center gap-2 rounded-full border p-2">
+          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-gray-100">
+            🕒
+          </span>
+          <span className="font-medium">{formatTime(timeLeft)}</span>
+        </div>
+
+          <Button color="warning"  className="bg-[#F36B25] w-12 h-11 font-medium text-white">
             Finish
           </Button>
         </div>
-      </div>
+      </header>
 
-      <div className="grid gap-4 md:grid-cols-[auto,1fr]">
-        {/* Question Numbers */}
-        <div className="flex flex-row md:flex-col gap-2">
+      <div className="flex flex-1 overflow-hidden ">
+        {/* Sidebar */}
+        <div className="hidden relative   md:flex flex-col gap-2 p-4 bg-white shadow-sm">
           {questions.map((q) => (
             <Button
               key={q.number}
-              className={`h-10 w-10 ${
-                q.active
-                  ? "bg-blue-500 text-white"
-                  : "bg-white text-gray-700 hover:bg-gray-100"
-              }`}
+             
+                className={`h-8 w-15 ${
+                  q.active
+                    ? "bg-[#27B667] text-white hover:bg-[#229956]"
+                  : "bg-white border hover:bg-gray-100"
+                }`}
               size="sm"
             >
               {q.number}
@@ -79,40 +76,105 @@ export default function ReviewQuestions() {
           ))}
         </div>
 
-        {/* Question Content */}
-        <Card className="p-6">
-          <div className="mb-6">
-            <span className="text-sm text-gray-500">Question No.1</span>
-            <h2 className="text-lg font-medium">
+        {/* Main Content */}
+        <div className="flex-1 overflow-auto p-4">
+          <div className="mb-4 p-10">
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-200 text-black">
+                Multiple Choice
+              </span>
+            <h2 className="text-lg font-medium mb-4">
               How are financial statements related to the objective of financial reporting?
             </h2>
-          </div>
+            <div className="space-y-4">
+              <label className="flex h-[60px] items-center gap-4 p-4 border border-gray-200 rounded-2xl cursor-pointer hover:bg-gray-50 bg-white">
+                <input
+                  type="checkbox"
+                  name="answer"
+                  value="1"
+                  checked={selectedAnswer === "1"}
+                  onChange={(e) => setSelectedAnswer(e.target.value)}
+                     className="h-4 w-4 accent-black rounded"
+                />
+                <span className="text-sm">
+                  Companies use financial statements to document their cash flow, and documenting cash flow is the objective of financial reporting.
+                </span>
+              </label>
+              <label className="flex items-center h-[60px] gap-4 p-4 border border-gray-200 rounded-2xl cursor-pointer hover:bg-gray-50 bg-white">
+                <input
+                  type="checkbox"
+                  name="answer"
+                  value="2"
+                  checked={selectedAnswer === "2"}
+                  onChange={(e) => setSelectedAnswer(e.target.value)}
+                   className="h-4 w-4 accent-black rounded"
+                />
+                <span className="text-sm">
+                  Companies use financial statements to determine selling prices of products, and determining selling prices of products is the objective of financial reporting.
+                </span>
+              </label>
+              <label className="flex items-center h-[60px] gap-4 p-4 border border-gray-200 rounded-2xl cursor-pointer hover:bg-gray-50 bg-white">
+                <input
+                  type="checkbox"
+                  name="answer"
+                  value="3"
+                  checked={selectedAnswer === "3"}
+                  onChange={(e) => setSelectedAnswer(e.target.value)}
+                    className="h-4 w-4 accent-black rounded"
+                />
+                <span className="text-sm">
+                  Companies use financial statements to determine which new projects to pursue, and deciding which projects to pursue is the objective of financial reporting.
+                </span>
+              </label>
+              <label className="flex items-center h-[60px] gap-4 p-4 border border-gray-200 rounded-2xl cursor-pointer hover:bg-gray-50 bg-white">
+              <input
+                  type="checkbox"
+                  name="answer"
+                  value="4"
+                  checked={selectedAnswer === "4"}
+                  onChange={(e) => setSelectedAnswer(e.target.value)}
+                  className="h-4 w-4 accent-black rounded"
+                />
 
-          <RadioGroup 
-            value={selectedAnswer} 
-            onValueChange={setSelectedAnswer}
-          >
-            {answers.map((answer, index) => (
-              <Radio key={index} value={index.toString()}>
-                {answer}
-              </Radio>
-            ))}
-          </RadioGroup>
-
-          <div className="mt-6 flex justify-between">
-            <Button
-              variant="bordered"
-              className="border-gray-300"
-              startContent={<ArrowLeft size={18} />}
-            >
-              Previous
-            </Button>
-            <Button color="primary">
-              Next
-            </Button>
+                <span className="text-sm">
+                  Companies use financial statements to provide financial information to potential capital providers, and providing information to capital providers is the objective of financial reporting.
+                </span>
+              </label>
+            </div>
           </div>
-        </Card>
+        </div>
       </div>
+
+      {/* Navigation Buttons */}
+           <div className="flex justify-between relative items-center border-t mb-2 border-gray-200  px-4">
+            {/* Left Icon */}
+            <div className="flex items-center">
+              <img src={flagicon} 
+                  alt="Icon Description" 
+                  className="h-6 w-6 object-contain"
+                />
+              </div>
+
+
+
+            {/* Buttons on the Right */}
+              <div className="flex relative h-16 justify-center items-center gap-4 ">
+                <Button
+                  color="black"
+                  className="w-32 h-11 rounded-xl  font-semibold  bg-black text-white"
+
+                >
+                  Previous
+                </Button>
+                <Button
+                  color="black"
+                  className="w-32 h-11 rounded-xl font-semibold bg-black text-white"
+                >
+                  Next
+                </Button>
+              </div>
+
+          </div>
+
     </div>
   )
 }
