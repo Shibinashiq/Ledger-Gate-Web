@@ -150,11 +150,11 @@ export default function ReviewQuestions() {
       {/* Navigation Buttons */}
       <div className="flex justify-between relative items-center border-t mb-2 border-gray-200  px-4">
             {/* Left Icon */}
-            <div className="flex items-center">
-              <img src={flagicon} 
-                  alt="Icon Description" 
-                  className="h-6 w-6 object-contain"
-                />
+              <div className="flex items-center ml-28">
+                <img src={flagicon} 
+                    alt="Icon Description" 
+                    className="h-10 w-full object-contain"
+                  />
               </div>
 
 
@@ -163,14 +163,14 @@ export default function ReviewQuestions() {
               <div className="flex relative  h-16 justify-center items-center gap-4 ">
                 <Button
                   color="black"
-                  className="w-32 h-11 rounded-xl  font-semibold  bg-black text-white"
+                  className="w-32 h-10 rounded-xl  font-semibold  bg-black text-white"
 
                 >
                   Previous
                 </Button>
                 <Button
                   color="black"
-                  className="w-32 h-11 rounded-xl font-semibold bg-black text-white"
+                  className="w-32 h-10 rounded-xl font-semibold bg-black text-white"
                 >
                   Next
                 </Button>
