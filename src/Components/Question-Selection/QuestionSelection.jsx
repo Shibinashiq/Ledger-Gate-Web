@@ -1,9 +1,12 @@
 import { Button, Card } from "@nextui-org/react"
-import { ArrowLeft, Check, Copy } from 'lucide-react'
+import { ArrowLeft, Check, Copy, ChevronDown } from 'lucide-react'
 import { useState, useEffect } from "react"
+import flagicon from '../../assets/Flag.png'
 
 export default function QuestionSelection() {
   const [timeLeft, setTimeLeft] = useState(84) // 1:24 in seconds
+  const [expandedExplanation, setExpandedExplanation] = useState(null)
+  const [selectedAnswer, setSelectedAnswer] = useState("")
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -29,25 +32,29 @@ export default function QuestionSelection() {
     { number: 8, active: false },
   ]
 
+  const toggleExplanation = (key) => {
+    setExpandedExplanation(expandedExplanation === key ? null : key)
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       {/* Header */}
-      <header className="flex items-center justify-between bg-white px-4 py-3 shadow-sm">
+      <header className="flex items-center  border  justify-between bg-white px-4 py-3 shadow-sm">
         <div className="flex items-center gap-4">
           <Button isIconOnly variant="light" className="text-gray-700">
             <ArrowLeft size={20} />
           </Button>
-          <h1 className="text-lg font-medium">Review Questions</h1>
+          <h1 className="text-large font-sans  ">Review Questions</h1>
         </div>
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
-            <Copy className="h-5 w-5 text-gray-500" />
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100">
-              🕒
-            </span>
-            <span className="font-medium">{formatTime(timeLeft)}</span>
-          </div>
-          <Button color="warning" className="bg-orange-500 font-medium text-white">
+        <div className="flex items-center gap-2 rounded-full border p-2">
+          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-gray-100">
+            🕒
+          </span>
+          <span className="font-medium">{formatTime(timeLeft)}</span>
+        </div>
+
+          <Button color="warning"  className="bg-[#F36B25] w-12 h-11 font-medium text-white">
             Finish
           </Button>
         </div>
@@ -55,15 +62,18 @@ export default function QuestionSelection() {
 
       <div className="flex flex-1 overflow-hidden">
         {/* Sidebar */}
-        <div className="hidden md:flex flex-col gap-2 p-4 bg-white shadow-sm">
+        <div className="hidden absolute h-[39rem] overflow-hidden z-20 md:flex flex-col gap-2 p-4 bg-white shadow-sm"
+        >
+       
           {questions.map((q) => (
             <Button
               key={q.number}
-              className={`h-10 w-10 min-w-[40px] ${
-                q.active
-                  ? "bg-green-500 text-white"
-                  : "bg-white text-gray-700 hover:bg-gray-50"
-              }`}
+             
+                className={`h-8 w-15 ${
+                  q.active
+                    ? "bg-[#27B667] text-white hover:bg-[#229956]"
+                  : "bg-white border hover:bg-gray-100"
+                }`}
               size="sm"
             >
               {q.number}
@@ -73,100 +83,157 @@ export default function QuestionSelection() {
 
         {/* Main Content */}
         <div className="flex-1 overflow-auto">
-          <div className="p-4 pb-20"> {/* Added padding at the bottom for footer space */}
-            <Card className="bg-white p-6">
-              <span className="text-sm text-gray-500 mb-2">Question No.1</span>
-              <h2 className="text-lg font-medium mb-6">
-                How are financial statements related to the objective of financial reporting?
-              </h2>
-
-              <div className="space-y-3">
-                {/* Correct Answer */}
-                <label className="flex items-start gap-4 p-4 rounded-lg bg-green-50 border border-green-200">
-                  <div className="flex items-center h-5 mt-0.5">
-                    <input
-                      type="radio"
-                      checked={true}
-                      readOnly
-                      className="h-4 w-4 accent-green-500"
-                    />
-                  </div>
-                  <span className="text-sm flex-1">
-                    Companies use financial statements to document their cash flow, and documenting cash flow is the objective of financial reporting.
+        <div className="pl-[12rem] pr-4  mt-8"> {/* Adjust padding to match the sidebar width */}
+                  <span className="inline-flex items-center px-2.5 mb-2 py-0.5 rounded-full text-xs font-medium bg-gray-200 text-black">
+                    Multiple Choice
                   </span>
-                  <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
-                </label>
+                  <h2 className="text-lg font-medium mb-4 ">
+                    How are financial statements related to the objective of financial reporting?
+                  </h2> financial statements related to the objective of financial reporting?
 
-                {/* Other Options */}
-                {[
-                  "Companies use financial statements to determine selling prices of products, and determining selling prices of products is the objective of financial reporting.",
-                  "Companies use financial statements to determine which new projects to pursue, and deciding which projects to pursue is the objective of financial reporting.",
-                  "Companies use financial statements to provide financial information to potential capital providers, and providing information to capital providers is the objective of financial reporting."
-                ].map((text, index) => (
-                  <label key={index} className="flex items-start gap-4 p-4 rounded-lg bg-white border border-gray-200">
-                    <div className="flex items-center h-5 mt-0.5">
+                  <div className="space-y-4">
+                    <label className="flex h-[60px] w-[80rem] items-center gap-4 p-4 border border-gray-200 rounded-2xl cursor-pointer hover:bg-gray-50 bg-white">
                       <input
-                        type="radio"
-                        disabled
-                        className="h-4 w-4 accent-green-500"
+                        type="checkbox"
+                        name="answer"
+                        value="1"
+                        checked={selectedAnswer === "1"}
+                        onChange={(e) => setSelectedAnswer(e.target.value)}
+                        className="h-4 w-4 accent-black rounded"
                       />
-                    </div>
-                    <span className="text-sm">{text}</span>
-                  </label>
-                ))}
-              </div>
+                      <span className="text-sm">
+                        Companies use financial statements to document their cash flow, and documenting cash flow is the objective of financial reporting.
+                      </span>
+                    </label>
+                    <label className="flex items-center h-[60px] w-[80rem] gap-4 p-4 border border-gray-200 rounded-2xl cursor-pointer hover:bg-gray-50 bg-white">
+                      <input
+                        type="checkbox"
+                        name="answer"
+                        value="2"
+                        checked={selectedAnswer === "2"}
+                        onChange={(e) => setSelectedAnswer(e.target.value)}
+                        className="h-4 w-4 accent-black rounded"
+                      />
+                      <span className="text-sm">
+                        Companies use financial statements to determine selling prices of products, and determining selling prices of products is the objective of financial reporting.
+                      </span>
+                    </label>
+                    <label className="flex items-center h-[60px] w-[80rem] gap-4 p-4 border border-gray-200 rounded-2xl cursor-pointer hover:bg-gray-50 bg-white">
+                      <input
+                        type="checkbox"
+                        name="answer"
+                        value="3"
+                        checked={selectedAnswer === "3"}
+                        onChange={(e) => setSelectedAnswer(e.target.value)}
+                        className="h-4 w-4 accent-black rounded"
+                      />
+                      <span className="text-sm">
+                        Companies use financial statements to determine which new projects to pursue, and deciding which projects to pursue is the objective of financial reporting.
+                      </span>
+                    </label>
+                    <label className="flex items-center h-[60px] w-[80rem] gap-4 p-4 border border-gray-200 rounded-2xl cursor-pointer hover:bg-gray-50 bg-white">
+                      <input
+                        type="checkbox"
+                        name="answer"
+                        value="4"
+                        checked={selectedAnswer === "4"}
+                        onChange={(e) => setSelectedAnswer(e.target.value)}
+                        className="h-4 w-4 accent-black rounded"
+                      />
+                      <span className="text-sm">
+                        Companies use financial statements to provide financial information to potential capital providers, and providing information to capital providers is the objective of financial reporting.
+                      </span>
+                    </label>
+                  </div>
 
-              {/* Correct Answer Message */}
-              <div className="mt-6">
+              {/* Explanations Section */}
+              <div className="mt-6 space-y-2">
                 <div className="flex items-center gap-2 text-green-600 mb-4">
                   <Check className="h-5 w-5" />
-                  <span className="font-medium">Your answered correctly</span>
+                  <span className="font-medium">You answered correctly</span>
                 </div>
 
-                {/* Explanations */}
-                <div className="space-y-4 text-sm text-gray-600">
-                  <div>
+                {/* Correct Answer Explanation */}
+                <div className="border rounded-lg">
+                  <div className="p-4">
                     <p className="font-medium mb-1">Correct Answer Explanation for D</p>
-                    <p>The main objective of financial reporting is to provide information to capital providers (investors and creditors). Financial statements are one way that information is provided to capital providers. Therefore, this is the correct answer.</p>
-                  </div>
-
-                  <div>
-                    <p className="font-medium mb-1">Explanation for A</p>
-                    <p>Documenting cash flow is important but it is not the sole objective of financial reporting. In addition, only one financial statement directly relates to cash flow. Therefore, this is an incorrect answer.</p>
-                  </div>
-
-                  <div>
-                    <p className="font-medium mb-1">Explanation for B</p>
-                    <p>Determining selling prices is not an objective of financial reporting. It is one goal of managerial accounting. Therefore, this is an incorrect answer.</p>
-                  </div>
-
-                  <div>
-                    <p className="font-medium mb-1">Explanation for C</p>
-                    <p>Determining which projects to pursue is not an objective of financial reporting. It is one goal of managerial accounting. Therefore, this is an incorrect answer.</p>
+                    <p className="text-sm text-gray-600">The main objective of financial reporting is to provide information to capital providers (investors and creditors). Financial statements are one way that information is provided to capital providers. Therefore, this is the correct answer.</p>
                   </div>
                 </div>
+
+                {/* Collapsible Explanations */}
+                {[
+                  {
+                    key: 'A',
+                    title: 'Explanation for A',
+                    content: 'Documenting cash flow is important, but it is not the sole objective of financial reporting. In addition, only one financial statement directly relates to cash flow. Therefore, this is an incorrect answer.'
+                  },
+                  {
+                    key: 'B',
+                    title: 'Explanation for B',
+                    content: 'Determining selling prices is not an objective of financial reporting. It is one goal of managerial accounting. Therefore, this is an incorrect answer.'
+                  },
+                  {
+                    key: 'C',
+                    title: 'Explanation for C',
+                    content: 'Determining which projects to pursue is not an objective of financial reporting. It is one goal of managerial accounting. Therefore, this is an incorrect answer.'
+                  }
+                ].map((explanation) => (
+                  <div key={explanation.key} className="border rounded-lg">
+                    <button
+                      onClick={() => toggleExplanation(explanation.key)}
+                      className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50"
+                    >
+                      <span className="font-medium">{explanation.title}</span>
+                      <ChevronDown 
+                        className={`h-5 w-5 transition-transform ${
+                          expandedExplanation === explanation.key ? 'rotate-180' : ''
+                        }`}
+                      />
+                    </button>
+                    {expandedExplanation === explanation.key && (
+                      <div className="p-4 pt-0">
+                        <p className="text-sm text-gray-600">{explanation.content}</p>
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
-            </Card>
+            {/* </Card> */}
           </div>
         </div>
       </div>
 
       {/* Navigation Buttons */}
-      <div className="flex border-t bg-white mt-auto sticky bottom-0 left-0 right-0">
-        <Button
-          variant="light"
-          className="flex-1 rounded-none py-4 text-gray-700"
-          startContent={<ArrowLeft size={18} />}
-        >
-          Previous
-        </Button>
-        <Button
-          color="primary"
-          className="flex-1 rounded-none py-4"
-        >
-          Next
-        </Button>
-      </div>
+      <div className="flex justify-between relative items-center border-t mb-2 border-gray-200  px-4">
+            {/* Left Icon */}
+              <div className="flex items-center ml-28">
+                <img src={flagicon} 
+                    alt="Icon Description" 
+                    className="h-10 w-full object-contain"
+                  />
+              </div>
+
+
+
+            {/* Buttons on the Right */}
+                <div className="flex relative  h-16 justify-center items-center gap-4 ">
+                  <Button
+                    color="black"
+                    className="w-32 h-10 rounded-xl  font-semibold  bg-black text-white"
+
+                  >
+                    Previous
+                  </Button>
+                  <Button
+                    color="black"
+                    className="w-32 h-10 rounded-xl font-semibold bg-black text-white"
+                  >
+                       Next
+                  </Button>
+               </div>
+
+          </div>
     </div>
   )
 }
