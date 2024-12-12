@@ -59,7 +59,9 @@ export default function ReviewQuestions() {
 
       <div className="flex flex-1 overflow-hidden ">
         {/* Sidebar */}
-        <div className="hidden relative  z-10 md:flex flex-col gap-2 p-4 bg-white shadow-sm">
+        <div className="hidden absolute h-[39rem] overflow-hidden z-20 md:flex flex-col gap-2 p-4 bg-white shadow-sm"
+        >
+       
           {questions.map((q) => (
             <Button
               key={q.number}
@@ -77,75 +79,76 @@ export default function ReviewQuestions() {
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 overflow-auto p-4">
-          <div className="mb-4 p-10">
-          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-200 text-black">
-                Multiple Choice
-              </span>
-            <h2 className="text-lg font-medium mb-4">
-              How are financial statements related to the objective of financial reporting?
-            </h2>
-            <div className="space-y-4">
-              <label className="flex h-[60px] items-center gap-4 p-4 border border-gray-200 rounded-2xl cursor-pointer hover:bg-gray-50 bg-white">
-                <input
-                  type="checkbox"
-                  name="answer"
-                  value="1"
-                  checked={selectedAnswer === "1"}
-                  onChange={(e) => setSelectedAnswer(e.target.value)}
-                     className="h-4 w-4 accent-black rounded"
-                />
-                <span className="text-sm">
-                  Companies use financial statements to document their cash flow, and documenting cash flow is the objective of financial reporting.
-                </span>
-              </label>
-              <label className="flex items-center h-[60px] gap-4 p-4 border border-gray-200 rounded-2xl cursor-pointer hover:bg-gray-50 bg-white">
-                <input
-                  type="checkbox"
-                  name="answer"
-                  value="2"
-                  checked={selectedAnswer === "2"}
-                  onChange={(e) => setSelectedAnswer(e.target.value)}
-                   className="h-4 w-4 accent-black rounded"
-                />
-                <span className="text-sm">
-                  Companies use financial statements to determine selling prices of products, and determining selling prices of products is the objective of financial reporting.
-                </span>
-              </label>
-              <label className="flex items-center h-[60px] gap-4 p-4 border border-gray-200 rounded-2xl cursor-pointer hover:bg-gray-50 bg-white">
-                <input
-                  type="checkbox"
-                  name="answer"
-                  value="3"
-                  checked={selectedAnswer === "3"}
-                  onChange={(e) => setSelectedAnswer(e.target.value)}
-                    className="h-4 w-4 accent-black rounded"
-                />
-                <span className="text-sm">
-                  Companies use financial statements to determine which new projects to pursue, and deciding which projects to pursue is the objective of financial reporting.
-                </span>
-              </label>
-              <label className="flex items-center h-[60px] gap-4 p-4 border border-gray-200 rounded-2xl cursor-pointer hover:bg-gray-50 bg-white">
-              <input
-                  type="checkbox"
-                  name="answer"
-                  value="4"
-                  checked={selectedAnswer === "4"}
-                  onChange={(e) => setSelectedAnswer(e.target.value)}
-                  className="h-4 w-4 accent-black rounded"
-                />
+       {/* Main Content */}
+              <div className="flex-1 overflow-auto">
+                <div className="pl-[12rem] pr-4  mt-8"> {/* Adjust padding to match the sidebar width */}
+                  <span className="inline-flex items-center px-2.5 mb-2 py-0.5 rounded-full text-xs font-medium bg-gray-200 text-black">
+                    Multiple Choice
+                  </span>
+                  <h2 className="text-lg font-medium mb-4 ">
+                    How are financial statements related to the objective of financial reporting?
+                  </h2>
+                  <div className="space-y-4">
+                    <label className="flex h-[60px] w-[80rem] items-center gap-4 p-4 border border-gray-200 rounded-2xl cursor-pointer hover:bg-gray-50 bg-white">
+                      <input
+                        type="checkbox"
+                        name="answer"
+                        value="1"
+                        checked={selectedAnswer === "1"}
+                        onChange={(e) => setSelectedAnswer(e.target.value)}
+                        className="h-4 w-4 accent-black rounded"
+                      />
+                      <span className="text-sm">
+                        Companies use financial statements to document their cash flow, and documenting cash flow is the objective of financial reporting.
+                      </span>
+                    </label>
+                    <label className="flex items-center h-[60px] w-[80rem] gap-4 p-4 border border-gray-200 rounded-2xl cursor-pointer hover:bg-gray-50 bg-white">
+                      <input
+                        type="checkbox"
+                        name="answer"
+                        value="2"
+                        checked={selectedAnswer === "2"}
+                        onChange={(e) => setSelectedAnswer(e.target.value)}
+                        className="h-4 w-4 accent-black rounded"
+                      />
+                      <span className="text-sm">
+                        Companies use financial statements to determine selling prices of products, and determining selling prices of products is the objective of financial reporting.
+                      </span>
+                    </label>
+                    <label className="flex items-center h-[60px] w-[80rem] gap-4 p-4 border border-gray-200 rounded-2xl cursor-pointer hover:bg-gray-50 bg-white">
+                      <input
+                        type="checkbox"
+                        name="answer"
+                        value="3"
+                        checked={selectedAnswer === "3"}
+                        onChange={(e) => setSelectedAnswer(e.target.value)}
+                        className="h-4 w-4 accent-black rounded"
+                      />
+                      <span className="text-sm">
+                        Companies use financial statements to determine which new projects to pursue, and deciding which projects to pursue is the objective of financial reporting.
+                      </span>
+                    </label>
+                    <label className="flex items-center h-[60px] w-[80rem] gap-4 p-4 border border-gray-200 rounded-2xl cursor-pointer hover:bg-gray-50 bg-white">
+                      <input
+                        type="checkbox"
+                        name="answer"
+                        value="4"
+                        checked={selectedAnswer === "4"}
+                        onChange={(e) => setSelectedAnswer(e.target.value)}
+                        className="h-4 w-4 accent-black rounded"
+                      />
+                      <span className="text-sm">
+                        Companies use financial statements to provide financial information to potential capital providers, and providing information to capital providers is the objective of financial reporting.
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </div>
 
-                <span className="text-sm">
-                  Companies use financial statements to provide financial information to potential capital providers, and providing information to capital providers is the objective of financial reporting.
-                </span>
-              </label>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Navigation Buttons */}
-           <div className="flex justify-between relative items-center border-t mb-2 border-gray-200  px-4">
+      <div className="flex justify-between relative items-center border-t mb-2 border-gray-200  px-4">
             {/* Left Icon */}
             <div className="flex items-center">
               <img src={flagicon} 
