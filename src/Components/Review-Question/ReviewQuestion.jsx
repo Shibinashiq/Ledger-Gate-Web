@@ -102,6 +102,33 @@ export default function ReviewQuestions() {
                         Companies use financial statements to document their cash flow, and documenting cash flow is the objective of financial reporting.
                       </span>
                     </label>
+                    <label className="flex h-[60px] w-[80rem] items-center gap-4 p-4 border border-gray-200 rounded-2xl cursor-pointer hover:bg-gray-50 bg-white">
+                      <input
+                        type="checkbox"
+                        name="answer"
+                        value="1"
+                        checked={selectedAnswer === "1"}
+                        onChange={(e) => setSelectedAnswer(e.target.value)}
+                        className="h-4 w-4 accent-black rounded"
+                      />
+                      <span className="text-sm">
+                        Companies use financial statements to document their cash flow, and documenting cash flow is the objective of financial reporting.
+                      </span>
+                    </label>
+                    <label className="flex h-[60px] w-[80rem] items-center gap-4 p-4 border border-gray-200 rounded-2xl cursor-pointer hover:bg-gray-50 bg-white">
+                      <input
+                        type="checkbox"
+                        name="answer"
+                        value="1"
+                        checked={selectedAnswer === "1"}
+                        onChange={(e) => setSelectedAnswer(e.target.value)}
+                        className="h-4 w-4 accent-black rounded"
+                      />
+                      <span className="text-sm">
+                        Companies use financial statements to document their cash flow, and documenting cash flow is the objective of financial reporting.
+                      </span>
+                    </label>
+                    
                     <label className="flex items-center h-[60px] w-[80rem] gap-4 p-4 border border-gray-200 rounded-2xl cursor-pointer hover:bg-gray-50 bg-white">
                       <input
                         type="checkbox"
@@ -148,35 +175,22 @@ export default function ReviewQuestions() {
       </div>
 
       {/* Navigation Buttons */}
-          <div className="flex justify-between relative items-center border-t mb-2 border-gray-200  px-4">
-            {/* Left Icon */}
-              <div className="flex items-center ml-28">
-                <img src={flagicon} 
-                    alt="Icon Description" 
-                    className="h-10 w-full object-contain"
-                  />
-              </div>
-
-
-
-            {/* Buttons on the Right */}
-                <div className="flex relative  h-16 justify-center items-center gap-4 ">
-                  <Button
-                    color="black"
-                    className="w-32 h-10 rounded-xl  font-semibold  bg-black text-white"
-
-                  >
-                    Previous
-                  </Button>
-                  <Button
-                    color="black"
-                    className="w-32 h-10 rounded-xl font-semibold bg-black text-white"
-                  >
-                       Next
-                  </Button>
-               </div>
-
+      <div className="fixed bottom-0 left-0 w-full bg-white  px-4 border-t border-gray-200 flex justify-between items-center z-10">
+          {/* Left Icon */}
+          <div className="flex items-center ml-28">
+            <img src={flagicon} alt="Icon Description" className="h-10 w-full object-contain" />
           </div>
+  
+          {/* Buttons on the Right */}
+          <div className="flex relative h-16 justify-center items-center gap-4">
+            <Button color="black" className="w-32 h-10 rounded-xl font-semibold bg-black text-white">
+              Previous
+            </Button>
+            <Button color="black" className="w-32 h-10 rounded-xl font-semibold bg-black text-white">
+              Next
+            </Button>
+          </div>
+        </div>
 
     </div>
   )
