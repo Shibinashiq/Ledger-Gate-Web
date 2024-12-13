@@ -41,7 +41,7 @@ export default function Report() {
   return (
     <div className="min-h-screen min-w-full bg-gradient-to-b from-[#C7D5FD] to-[#F4F4F4] p-6">
 
-      <div className="mx-auto max-w-4xl">
+      <div className=" ml-16 mt-3">
         <h1 className="mb-6 text-2xl font-bold">Report</h1>
 
         <div className="mb-6 flex space-x-6 border-b border-gray-200">

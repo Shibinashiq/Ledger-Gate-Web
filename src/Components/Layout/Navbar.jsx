@@ -17,11 +17,11 @@ const Navbar = () => {
 
       <div className="flex w-full max-w-xl items-center px-4">
         <div className="relative w-full">
-          <Search className="absolute right-3   top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
           <input
             type="search"
             placeholder="Search Subject, Topic..."
-            className="w-full rounded-full shadow-sm  border bg-gray-50 py-2 pl-10 pr-4 text-sm outline-none focus:border-gray-300"
+            className="w-full rounded-full shadow-sm border bg-gray-50 py-2 pl-10 pr-4 text-sm outline-none focus:border-gray-300"
           />
         </div>
       </div>
