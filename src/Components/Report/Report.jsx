@@ -1,11 +1,10 @@
 import { Card, Progress, Accordion, AccordionItem } from "@nextui-org/react"
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import { useState } from 'react'
-
 export default function Report() {
-  const [activeTab, setActiveTab] = useState("Exams")
+  const [activeTab, setActiveTab] = useState("Exams");
 
-  const tabs = ["Exams", "Video watch", "Snap test"]
+  const tabs = ["Exams", "Video watch", "Snap test"];
 
   const sections = [
     {
@@ -36,14 +35,19 @@ export default function Report() {
       progress: 0,
       subsections: [],
     },
-  ]
+  ];
 
   return (
-    <div className="min-h-screen min-w-full bg-gradient-to-b from-[#C7D5FD] to-[#F4F4F4] p-6">
-
-      <div className=" ml-16 mt-3">
+    <div 
+    className="min-h-screen min-w-full p-6" 
+    style={{
+      background: `linear-gradient(to bottom, #C7D5FD 10%, #F4F4F4 40%)`,
+    }}
+  >
+      <div className="ml-16 mt-3">
         <h1 className="mb-6 text-2xl font-bold">Report</h1>
 
+        {/* Tab navigation */}
         <div className="mb-6 flex space-x-6 border-b border-gray-200">
           {tabs.map((tab) => (
             <button
@@ -60,9 +64,11 @@ export default function Report() {
           ))}
         </div>
 
-        <div className="space-y-4">
+        {/* Section Cards */}
+        <div className="space-y-6">
           {sections.map((section, index) => (
             <Card key={index} className="p-4 shadow-sm">
+              {/* Section Title and Progress */}
               <div className="mb-4">
                 <div className="mb-2 flex items-center justify-between">
                   <h2 className="text-lg font-semibold">{section.title}</h2>
@@ -75,6 +81,7 @@ export default function Report() {
                 />
               </div>
 
+              {/* Subsections */}
               <Accordion className="grid grid-cols-1 sm:grid-cols-2 gap-4" variant="splitted">
                 {section.subsections.map((subsection, subIndex) => (
                   <AccordionItem
@@ -113,6 +120,7 @@ export default function Report() {
                       </div>
                     }
                   >
+                    {/* Topics */}
                     <div className="space-y-3 pt-2">
                       {subsection.topics.map((topic, topicIndex) => (
                         <div key={topicIndex}>
@@ -136,6 +144,5 @@ export default function Report() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-

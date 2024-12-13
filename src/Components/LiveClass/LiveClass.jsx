@@ -149,8 +149,13 @@ export default function LiveClass() {
   ];
 
   return (
-      <div className="min-w-full min-h-full  p-6 bg-gradient-to-b from-[#FDE7C7] to-[#F4F4F4]">
-        <div className=" ml-16 mt-3">
+     <div 
+          className="min-w-full min-h-full p-6" 
+          style={{
+            background: `linear-gradient(to bottom, #FDE7C7 10%, #F4F4F4 40%)`,
+          }}
+        >
+   <div className=" ml-16 mt-3">
           <h1 className=" text-2xl font-bold text-gray-900">Live Class</h1>
           
           <Tabs 
