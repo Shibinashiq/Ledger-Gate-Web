@@ -25,8 +25,8 @@ export default function QuestionSelection() {
   const getOptionClassName = (value) => {
     if (!isSubmitted) {
       return selectedAnswer === value 
-        ? "border-blue-500 " 
-        : "border-gray-200";
+        ? " " 
+        : "";
     }
     
     if (value === CORRECT_ANSWER) {
@@ -102,7 +102,7 @@ export default function QuestionSelection() {
                       checked={selectedAnswer === value}
                       onChange={() => handleAnswerSelection(value)}
                       disabled={isSubmitted}
-                      className="h-4 w-4 rounded"
+                      className="h-4 w-4 rounded accent-black"
                     />
                     <span className="text-sm text-black">
                       {`Option ${value} explanation`}
