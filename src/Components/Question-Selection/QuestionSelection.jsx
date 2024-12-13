@@ -7,10 +7,12 @@ import Answer from "./Answer";
 export default function QuestionSelection() {
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
-
+  
   const CORRECT_ANSWER = "1";
 
   const handleAnswerSelection = (value) => {
+
+
     if (!isSubmitted) {
       setSelectedAnswer(value);
     }

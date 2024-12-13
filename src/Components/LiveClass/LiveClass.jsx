@@ -56,28 +56,36 @@ const ClassCard = ({
 )
 
 const MonthSection = ({ month, classes }) => {
-  const liveClass = classes.find((classItem) => classItem.isLive);
-  const otherClasses = classes.filter((classItem) => !classItem.isLive);
+  // Find all live classes and other classes
+  const liveClasses = classes.filter((classItem) => classItem.isLive);
+  const normalClasses = classes.filter((classItem) => !classItem.isLive);
 
-  // Show only enough cards to fit in three rows
-  const cardsToShow = otherClasses.slice(0, 6); // Assuming 3 columns, 2 rows max after the live class
+  // Create a new array with 6 slots (2 rows × 3 columns)
+  const arrangedClasses = new Array(6).fill(null);
+
+  // Place live classes in the first row (positions 0, 1, 2)
+  liveClasses.forEach((liveClass, index) => {
+    if (index < 3) { // Only fill first row
+      arrangedClasses[index] = liveClass;
+    }
+  });
+
+  // Fill second row with normal classes (positions 3, 4, 5)
+  normalClasses.forEach((normalClass, index) => {
+    if (index < 3) { // Only fill second row
+      arrangedClasses[index + 3] = normalClass;
+    }
+  });
 
   return (
-    <div className="space-y-4 ">
+    <div className="space-y-4">
       <h2 className="text-lg font-semibold text-gray-900">{month}</h2>
       
-      {/* Live Class Section */}
-      {liveClass && (
-        <div>
-          <h3 className="text-md font-semibold text-red-500 mb-2">Live Class</h3>
-          <ClassCard key="live" {...liveClass} />
-        </div>
-      )}
-
-      {/* Grid for Other Classes */}
-      <div className="mt-4 grid grid-rows-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {cardsToShow.map((classItem, index) => (
-          <ClassCard key={index} {...classItem} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {arrangedClasses.map((classItem, index) => (
+          <div key={index}>
+            {classItem && <ClassCard {...classItem} />}
+          </div>
         ))}
       </div>
     </div>
@@ -97,7 +105,9 @@ export default function LiveClass() {
       title: "Capital budgeting Process",
       chapter: "Chapter E1",
       date: "23",
-      time: "10:30 AM - 11:30 AM"
+      time: "10:30 AM - 11:30 AM",
+      isLive: true
+
     },
     {
       title: "Doubt clearing session",
@@ -139,49 +149,53 @@ export default function LiveClass() {
   ];
 
   return (
-    <div className="min-w-full min-h-full p-6 bg-gradient-to-b from-[#FDE7C7] to-[#F4F4F4]">
-      <div className="">
-        <h1 className="mb-6 text-2xl font-bold text-gray-900">Live Class</h1>
-        
-        <Card className="h-[500px] ">
-          <CardBody className="p-6  overflow-y-auto">
-            <Tabs 
-              aria-label="Class status" 
-              color="warning"
-              variant="underlined"
-              classNames={{
-                tabList: "gap-6 w-full relative rounded-none p-0 border-b border-gray-200",
-                cursor: "w-full bg-[#FF6B00]",
-                tab: "max-w-fit px-0 h-12",
-                tabContent: "group-data-[selected=true]:text-[#FF6B00]"
-              }}
+      <div className="min-w-full min-h-full  p-6 bg-gradient-to-b from-[#FDE7C7] to-[#F4F4F4]">
+        <div className=" ml-16 mt-3">
+          <h1 className=" text-2xl font-bold text-gray-900">Live Class</h1>
+          
+          <Tabs 
+            aria-label="Class status" 
+            color="warning"
+            variant="underlined"
+            classNames={{
+              tabList: "gap-6 w-full relative rounded-none p-0 border-b border-gray-200",
+              cursor: "w-full bg-[#FF6B00]",
+              tab: "max-w-fit px-0 h-12",
+              tabContent: "group-data-[selected=true]:text-[#FF6B00]"
+            }}
+          >
+            <Tab 
+              key="upcoming" 
+              title={
+                <span className="px-0 font-medium">Upcoming</span>
+              }
             >
-              <Tab 
-                key="upcoming" 
-                title={
-                  <span className="px-0 font-medium">Upcoming</span>
-                }
-              >
-                <div className="">
-                  <MonthSection month="November 2024" classes={novemberClasses} />
-                </div>
-              </Tab>
-              <Tab 
-                key="completed" 
-                title={
-                  <span className="px-0 font-medium">Completed</span>
-                }
-              >
-                <div className="">
-                <MonthSection month="November 2024" classes={novemberClasses} />
-                <MonthSection month="November 2024" classes={novemberClasses} />
-                  <MonthSection month="December 2024" classes={decemberClasses} />
-                </div>
-              </Tab>
-            </Tabs>
-          </CardBody>
-        </Card>
+              <Card className="h-[500px] w-[1200px] ">
+                <CardBody className="p-6 overflow-y-auto">
+                  <div className="">
+                    <MonthSection month="November 2024" classes={novemberClasses} />
+                  </div>
+                </CardBody>
+              </Card>
+            </Tab>
+            <Tab 
+              key="completed" 
+              title={
+                <span className="px-0 font-medium">Completed</span>
+              }
+            >
+              <Card className="h-[500px] mt-4">
+                <CardBody className="p-6 overflow-y-auto">
+                  <div className="">
+                    <MonthSection month="November 2024" classes={novemberClasses} />
+                    <MonthSection month="November 2024" classes={novemberClasses} />
+                    <MonthSection month="December 2024" classes={decemberClasses} />
+                  </div>
+                </CardBody>
+              </Card>
+            </Tab>
+          </Tabs>
+        </div>
       </div>
-    </div>
   )
 }

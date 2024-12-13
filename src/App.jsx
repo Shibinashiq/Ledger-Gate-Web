@@ -4,7 +4,6 @@ import HomePage from '../src/Pages/Home';
 import LiveClassPage from '../src/Pages/LiveClassPage'; 
 import ReportPage from '../src/Pages/ReportPage'
 import Login from './Components/Login/Login';
-import ReviewQuestions from '../src/Pages/ReviewQuestion'
 import QuestionSelection from './Components/Question-Selection/QuestionSelection';
 function App() {
   return (
@@ -15,7 +14,6 @@ function App() {
         <Route path="liveclass/" element={<LiveClassPage />} /> 
         <Route path="report/" element={<ReportPage />} /> 
         <Route path="login/" element={<Login />} /> 
-        <Route path="reviewquestions/" element={<ReviewQuestions />} /> 
         <Route path="questionselection/" element={<QuestionSelection />} /> 
       </Routes>
     </Router>

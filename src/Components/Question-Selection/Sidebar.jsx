@@ -15,16 +15,16 @@ function Sidebar() {
   ];
 
   return (
-    <div className="hidden md:flex flex-col gap-2 p-4 bg-white shadow-sm fixed top-16 left-0 h-[calc(100vh-64px)] z-20">
+    <div className="hidden md:flex flex-col gap-2 p-4 bg-white shadow-sm fixed top-16 left-0 h-[calc(100vh-64px)] w-24 z-20">
     {questions.map((q) => (
       <Button
         key={q.number}
-        className={`h-8 w-15 ${
-          q.active
-            ? "bg-[#27B667] text-white hover:bg-[#229956]"
-            : "bg-white border hover:bg-gray-100"
-        }`}
-        size="sm"
+        className={`h-8 w-14 min-w-[40px] flex justify-center items-center px-0 ${
+            q.active
+              ? "bg-[#27B667] text-white hover:bg-[#229956]"
+              : "bg-white border hover:bg-gray-100"
+          }`}
+          size="sm"
       >
         {q.number}
       </Button>
